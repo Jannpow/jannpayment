@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payment JannStore</title>
+  <title>Payment HamxyzOfficial</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <style>
@@ -169,42 +169,7 @@
       background: var(--accent);
       box-shadow: var(--neon-shadow);
     }
-    .music-player {
-      position: fixed;
-      top: 140px;
-      right: 20px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-      display: none;
-      z-index: 1001;
-      backdrop-filter: blur(10px);
-      min-width: 220px;
-      box-shadow: var(--neon-shadow);
-    }
-    .music-player.active {
-      display: block;
-      animation: fadeIn .3s ease;
-    }
-    .song-list {
-      list-style: none;
-      margin-top: 10px;
-    }
-    .song-item {
-      padding: 10px;
-      margin: 5px 0;
-      background: var(--card-bg);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all .3s ease;
-      border: 1px solid transparent;
-    }
-    .song-item:hover {
-      background: var(--accent);
-      border-color: var(--accent-glow);
-      box-shadow: var(--neon-shadow);
-    }
+
     .container {
       min-height: 100vh;
       display: flex;
@@ -449,22 +414,11 @@
       <button class="dropdown-item" onclick="toggleTheme()">
         <span class="material-symbols-outlined">brightness_6</span> Toggle Theme
       </button>
-      <button class="dropdown-item" onclick="toggleMusicPlayer()">
-        <span class="material-symbols-outlined">music_note</span> Music Player
-      </button>
+
     </div>
   </div>
 
-  <!-- Music Player -->
-  <div class="music-player" id="musicPlayer">
-    <h3>Pilih Lagu</h3>
-    <ul class="song-list">
-      <li class="song-item" onclick="playMusic('lofi')">Lofi Chill</li>
-      <li class="song-item" onclick="playMusic('ambient')">Ambient Space</li>
-      <li class="song-item" onclick="playMusic('nebula')">Nebula Dreams</li>
-      <li class="song-item" onclick="stopMusic()">Stop Music</li>
-    </ul>
-  </div>
+
 
   <!-- Contact Modal -->
   <div class="modal" id="contactModal">
@@ -575,8 +529,7 @@
 
  
 
-  <!-- Audio -->
-  <audio id="backgroundMusic" loop></audio>
+
 
   <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -601,22 +554,16 @@
       menu.classList.toggle('active');
     }
 
-    // Close menu/music/modal when clicking outside
+    // Close menu/modal when clicking outside
     document.addEventListener('click', function(event) {
       const menuToggle = document.getElementById('menuToggle');
       const dropdownMenu = document.getElementById('dropdownMenu');
-      const musicPlayer = document.getElementById('musicPlayer');
       const contactModal = document.getElementById('contactModal');
 
       // Check if click is outside menu toggle and dropdown menu
       if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
         menuToggle.classList.remove('active');
         dropdownMenu.classList.remove('active');
-      }
-
-      // Check if click is outside music player
-      if (!musicPlayer.contains(event.target) && !event.target.closest('.dropdown-item[onclick*="toggleMusicPlayer"]')) {
-        musicPlayer.classList.remove('active');
       }
 
       // Check if click is outside contact modal
@@ -660,24 +607,7 @@
       showNotif(document.body.classList.contains('light-mode') ? 'Mode terang aktif' : 'Mode gelap aktif');
     }
 
-    // Music player
-    function toggleMusicPlayer() {
-      document.getElementById('musicPlayer').classList.toggle('active');
-    }
-    function playMusic(type) {
-      const audio = document.getElementById('backgroundMusic');
-      audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
-      audio.play();
-      showNotif('🎵 Musik dimulai');
-      toggleMusicPlayer();
-    }
-    function stopMusic() {
-      const audio = document.getElementById('backgroundMusic');
-      audio.pause();
-      audio.currentTime = 0;
-      showNotif('⏹️ Musik dihentikan');
-      toggleMusicPlayer();
-    }
+
 
     // Contact modal
     function showContactModal() {
